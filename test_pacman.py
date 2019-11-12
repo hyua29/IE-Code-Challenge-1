@@ -10,6 +10,11 @@ class PacmanGameTestCases(unittest.TestCase):
         return super().setUp()
     
     def test_perform_place(self):
+        # position pacman
+        self.game.pacman_x = 1
+        self.game.pacman_y = 2
+        self.game.pacman_direction = SOUTH
+
         command = "PLACE 0,0,NORTH"
         self.game.perform_place(command)
 
@@ -18,14 +23,17 @@ class PacmanGameTestCases(unittest.TestCase):
         self.assertEquals(self.game.pacman_direction, NORTH)
         
     def test_perform_place_wont_fall(self):
-        command = "PLACE -1,5,NORTH"
+        # position pacman
         self.game.pacman_x = 1
         self.game.pacman_y = 2
+        self.game.pacman_direction = SOUTH
+
+        command = "PLACE -1,5,NORTH"
         self.game.perform_place(command)
 
         self.assertEquals(self.game.pacman_x, 1)
         self.assertEquals(self.game.pacman_y, 2)
-        self.assertEquals(self.game.pacman_direction, None)
+        self.assertEquals(self.game.pacman_direction, SOUTH)
         
     def test_perform_move_east(self):
         command = "PLACE 1,1,EAST"
