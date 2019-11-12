@@ -98,9 +98,10 @@ class PacmanGameTestCases(unittest.TestCase):
         report = self.game.perform_report()
         expected_report = "0,0,WEST"
 
+        # Right report for current position
         self.assertEquals(report, expected_report)
     
-    def test_run_command_invalid_command_raise_error(self):
+    def test_run_command_raise_error_if_invalid_command(self):
         self.assertRaises(ValueError, self.game.run_command("INVALID"))
         
     def test_pacman_game_1(self):
