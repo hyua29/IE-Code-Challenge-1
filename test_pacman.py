@@ -10,7 +10,6 @@ class PacmanGameTestCases(unittest.TestCase):
         return super().setUp()
     
     def test_perform_place(self):
-        # position pacman
         self.game.pacman_x = 1
         self.game.pacman_y = 2
         self.game.pacman_direction = SOUTH
@@ -18,12 +17,12 @@ class PacmanGameTestCases(unittest.TestCase):
         command = "PLACE 0,0,NORTH"
         self.game.perform_place(command)
 
+        # pacman positioned successfully
         self.assertEquals(self.game.pacman_x, 0)
         self.assertEquals(self.game.pacman_y, 0)
         self.assertEquals(self.game.pacman_direction, NORTH)
         
     def test_perform_place_wont_fall(self):
-        # position pacman
         self.game.pacman_x = 1
         self.game.pacman_y = 2
         self.game.pacman_direction = SOUTH
@@ -31,53 +30,70 @@ class PacmanGameTestCases(unittest.TestCase):
         command = "PLACE -1,5,NORTH"
         self.game.perform_place(command)
 
+        # position should not change
         self.assertEquals(self.game.pacman_x, 1)
         self.assertEquals(self.game.pacman_y, 2)
         self.assertEquals(self.game.pacman_direction, SOUTH)
         
     def test_perform_move_east(self):
-        command = "PLACE 1,1,EAST"
-        self.game.perform_place(command)
+        self.game.pacman_x = 1
+        self.game.pacman_y = 1
+        self.game.pacman_direction = EAST
+
         self.game.perform_move()
         
+        # has moved to right position
         self.assertEquals(self.game.pacman_x, 2)
         self.assertEquals(self.game.pacman_y, 1)
     
     def test_perform_move_north(self):
-        command = "PLACE 1,1,NORTH"
-        self.game.perform_place(command)
+        self.game.pacman_x = 1
+        self.game.pacman_y = 1
+        self.game.pacman_direction = NORTH
+
         self.game.perform_move()
         
+        # has moved to right position
         self.assertEquals(self.game.pacman_x, 1)
         self.assertEquals(self.game.pacman_y, 2)
         
     def test_perform_move_south(self):
-        command = "PLACE 1,1,EAST"
-        self.game.perform_place(command)
+        self.game.pacman_x = 1
+        self.game.pacman_y = 1
+        self.game.pacman_direction = EAST
+
         self.game.perform_move()
-        
+
+        # has moved to right position
         self.assertEquals(self.game.pacman_x, 2)
         self.assertEquals(self.game.pacman_y, 1)
                 
     def test_perform_move_west(self):
-        command = "PLACE 1,1,WEST"
-        self.game.perform_place(command)
+        self.game.pacman_x = 1
+        self.game.pacman_y = 1
+        self.game.pacman_direction = WEST
+
         self.game.perform_move()
         
+        # has moved to right position
         self.assertEquals(self.game.pacman_x, 0)
         self.assertEquals(self.game.pacman_y, 1)
         
     def test_perform_move_wont_fall(self):
-        command = "PLACE 0,0,WEST"
-        self.game.perform_place(command)
+        self.game.pacman_x = 0
+        self.game.pacman_y = 0
+        self.game.pacman_direction = WEST
+
         self.game.perform_move()
-        
+
+        # has moved to right position
         self.assertEquals(self.game.pacman_x, 0)
         self.assertEquals(self.game.pacman_y, 0)
         
     def test_perform_report(self):
-        command = "PLACE 0,0,WEST"
-        self.game.perform_place(command)
+        self.game.pacman_x = 0
+        self.game.pacman_y = 0
+        self.game.pacman_direction = WEST
 
         report = self.game.perform_report()
         expected_report = "0,0,WEST"
