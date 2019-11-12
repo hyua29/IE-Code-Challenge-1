@@ -23,13 +23,13 @@ To run the tests, please run the following command in the shell under the root f
 python3 test_pacman.py 
 ```
 
-#### Active pipenv
+#### Activate pipenv
 
 Install pipenv.
 
 Run the following command in the shell under the root folder.
 ```
-pipenv run python3 test_pacman.py 
+pipenv shell
 ```
 
 
