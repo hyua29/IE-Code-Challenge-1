@@ -40,9 +40,9 @@ class PacmanGame:
         if self.pacman_direction is None and not PLACE in command: # The first command must be PLACE
             return
 
-        # run command accordingly
+        # run commands accordingly
         if PLACE in command:
-            direction = self.perform_Place(command)
+            self.perform_place(command)
         elif LEFT in command:
             self.perform_left()
         elif RIGHT in command:
@@ -54,7 +54,7 @@ class PacmanGame:
         else:
             raise ValueError("Invalid command: {}".format(command))
 
-    def perform_Place(self, command):
+    def perform_place(self, command):
         detailed_command = command.split()
         position_details = detailed_command[1].split(',')
         
