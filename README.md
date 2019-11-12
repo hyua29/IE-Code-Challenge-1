@@ -7,7 +7,7 @@ The code is written without any third party libraries, so it should be able to r
 
 The code is written under the assumption that **all input commands are in valid format**.
 
-### Run Simulator
+#### Run Simulator
 The source code of the simulator is under pacman.py. run_game() takes in the path of an input file and runs all the instructions inside.
 ```
 game = PacmanGame()
