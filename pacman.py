@@ -61,7 +61,7 @@ class PacmanGame:
         y = int(position_details[1])
         new_direction = position_details[2]
 
-        if not self.out_of_range(x, y): # update pacman position only if it's a valid location
+        if not self.is_out_of_range(x, y): # update pacman position only if it's a valid location
             self.pacman_x = x
             self.pacman_y = y
             self.pacman_direction = new_direction
@@ -109,7 +109,7 @@ class PacmanGame:
             next_x = self.pacman_x - 1
             next_y = self.pacman_y
         
-        if not self.out_of_range(next_x, next_y):
+        if not self.is_out_of_range(next_x, next_y):
             self.pacman_x = next_x
             self.pacman_y = next_y
         
@@ -118,7 +118,7 @@ class PacmanGame:
         print(report)
         return report
 
-    def out_of_range(self, new_x, new_y):
+    def is_out_of_range(self, new_x, new_y):
         if new_x >= GRID_WIDTH or new_x < 0 or new_y >= GRID_HEIGHT or new_y < 0:
             return True
         return False
