@@ -19,7 +19,6 @@ GRID_HEIGHT = 5
 class PacmanGame:
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.grid = [[0 for x in range(GRID_HEIGHT)] for y in range(GRID_WIDTH)]
         self.pacman_direction = None
         self.pacman_x = -1
         self.pacman_y = -1
@@ -63,7 +62,6 @@ class PacmanGame:
         new_direction = position_details[2]
 
         if not self.out_of_range(x, y): # update pacman position only if it's a valid location
-            self.grid[x][y] = 1
             self.pacman_x = x
             self.pacman_y = y
             self.pacman_direction = new_direction
@@ -112,8 +110,6 @@ class PacmanGame:
             next_y = self.pacman_y
         
         if not self.out_of_range(next_x, next_y):
-            self.grid[self.pacman_x][self.pacman_x] = 0
-            self.grid[next_x][next_y] = 1
             self.pacman_x = next_x
             self.pacman_y = next_y
         

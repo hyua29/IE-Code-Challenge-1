@@ -9,10 +9,6 @@ class PacmanGameTestCases(unittest.TestCase):
         self.game = PacmanGame()
         return super().setUp()
     
-    def test_grid_size(self):
-        self.assertEquals(len(self.game.grid), GRID_HEIGHT)
-        self.assertEquals(len(self.game.grid[0]), GRID_WIDTH)
-    
     def test_perform_place(self):
         command = "PLACE 0,0,NORTH"
         self.game.perform_place(command)
